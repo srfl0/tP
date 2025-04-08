@@ -11,10 +11,23 @@ public class MealPlanManager {
 
     public MealPlanManager() {}
 
+    /**
+     * Adds a new plan to planList
+     *
+     * @param planName name of plan as entered by the user
+     */
+
     public void addPlan(String planName) {
         Plan plan = new Plan(planName);
         planList.add(plan);
     }
+
+    /**
+     * Removes a plan from planList
+     *
+     * @param planIndex corresponding index of the plan
+     *                  in planList
+     */
 
     public void removePlan(int planIndex) {
         Plan plan = planList.get(planIndex);
@@ -26,6 +39,13 @@ public class MealPlanManager {
             }
         }
     }
+
+    /**
+     * Substantiates an index of weeklyPlans with plan details
+     *
+     * @param planIndex the corresponding index of a plan in planList
+     * @param day corresponding enum related to the index of weeklyPlans
+     */
 
     public void addPlanToDay(int planIndex, Day day) {
         int dayIndex = day.ordinal();
@@ -40,6 +60,13 @@ public class MealPlanManager {
         }
     }
 
+    /**
+     * Clears the plans currently saved to the corresponding
+     * day if applicable
+     *
+     * @param day corresponding enum related to the index of weeklyPlans
+     */
+
     public void removePlanFromDay(Day day) {
         int dayIndex = day.ordinal();
         if (weeklyPlans[dayIndex] != null) {
@@ -50,6 +77,12 @@ public class MealPlanManager {
         }
     }
 
+    /**
+     * Provide a detailed view of one day in weeklyPlans
+     *
+     * @param day corresponding enum related to the index of weeklyPlans
+     */
+
     public void viewDayPlan(Day day) {
         int dayIndex = day.ordinal();
         if (weeklyPlans[dayIndex] != null) {
@@ -58,6 +91,11 @@ public class MealPlanManager {
             Ui.showMessage("There is no plan for " + day);
         }
     }
+
+    /**
+     * Provide a summarised view containing only the plans' names
+     * in weeklyPlans
+     */
 
     public void viewPlanForWeek() {
         Ui.printLine();
@@ -71,6 +109,10 @@ public class MealPlanManager {
         }
     }
 
+    /**
+     * Provides a summarised view of all currently created plans
+     */
+
     public void viewPlanList() {
         if (planList.isEmpty()) {
             Ui.showMessage("No plans available.");
@@ -83,6 +125,12 @@ public class MealPlanManager {
         }
     }
 
+    /**
+     * Provides a detailed view of one created plan
+     *
+     * @param planIndex corresponding index of a plan in planList
+     */
+
     public void viewPlan(int planIndex) {
         if (planIndex < 0 || planIndex >= planList.size()) {
             Ui.showMessage("Invalid plan index.");
@@ -91,6 +139,14 @@ public class MealPlanManager {
         Plan plan = planList.get(planIndex);
         Ui.showMessage(plan.toString());
     }
+
+    /**
+     * Locate a plan based on the search key provided.
+     * The plan's index will also be indicated
+     *
+     * @param planName search key for finding plan
+     * @return boolean for matching plan found
+     */
 
     public boolean findPlan(String planName) {
         boolean found = false;
@@ -125,6 +181,13 @@ public class MealPlanManager {
         }
         return planList.get(planIndex);
     }
+
+    /**
+     * Obtain details related to plan
+     *
+     * @param planName
+     * @return
+     */
 
     public Plan getPlanDetails(String planName) {
         for (Plan plan : planList) {

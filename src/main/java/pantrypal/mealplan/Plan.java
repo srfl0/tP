@@ -25,6 +25,14 @@ public class Plan {
         return planRecipes;
     }
 
+    /**
+     * Add a recipe to the matching planRecipe index
+     * as specified by mealType
+     *
+     * @param recipe a Recipe object to be added
+     * @param mealType corresponding enum to planRecipes
+     */
+
     public void addRecipeToPlan(Recipe recipe, MealType mealType) {
         int mealIndex = mealType.ordinal();
         if (planRecipes[mealIndex] == null) {
@@ -33,6 +41,13 @@ public class Plan {
             Ui.showMessage("A recipe is already assigned to this meal.");
         }
     }
+
+    /**
+     * Remove a recipe from the matching planRecipe index
+     * as specified by mealType
+     *
+     * @param mealType corresponding enum to planRecipes
+     */
 
     public void removeRecipeFromPlan(MealType mealType) {
         int mealIndex = mealType.ordinal();
